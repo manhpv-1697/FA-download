@@ -10,6 +10,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
@@ -37,7 +40,7 @@
 
         <receiver
             android:name="jp.juggler.fadownloader.NewFileWidget"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
@@ -76,7 +79,7 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
             android:theme="@style/AppThemeNoTitle"
             android:label="@string/app_name"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -91,7 +94,7 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
             android:theme="@style/AppTheme"
             android:label="@string/tasker_setting_action"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.twofortyfouram.locale.intent.action.EDIT_SETTING"/>
             </intent-filter>
@@ -105,7 +108,7 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
             android:theme="@style/AppTheme"
             android:label="@string/tasker_setting_condition"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.twofortyfouram.locale.intent.action.EDIT_CONDITION" />
             </intent-filter>

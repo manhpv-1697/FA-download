@@ -5,10 +5,10 @@ apply plugin: 'kotlin-android'
 
 android {
 
-    compileSdkVersion target_sdk_version
+    compileSdkVersion 33
     defaultConfig {
-        minSdkVersion min_sdk_version
-        targetSdkVersion target_sdk_version
+        minSdkVersion 24
+        targetSdkVersion 34
 
         versionCode 25
         versionName "1.15.0"

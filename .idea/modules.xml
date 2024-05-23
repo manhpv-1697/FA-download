@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FADownloader.iml" filepath="$PROJECT_DIR$/FADownloader.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/billing/billing.iml" filepath="$PROJECT_DIR$/billing/billing.iml" />
-      <module fileurl="file://$PROJECT_DIR$/exif/exif.iml" filepath="$PROJECT_DIR$/exif/exif.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FADownloader.iml" filepath="$PROJECT_DIR$/.idea/modules/FADownloader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FADownloader.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FADownloader.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FADownloader.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FADownloader.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FADownloader.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FADownloader.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FADownloader.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FADownloader.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/billing/FADownloader.billing.iml" filepath="$PROJECT_DIR$/.idea/modules/billing/FADownloader.billing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/billing/FADownloader.billing.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/billing/FADownloader.billing.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/billing/FADownloader.billing.main.iml" filepath="$PROJECT_DIR$/.idea/modules/billing/FADownloader.billing.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/billing/FADownloader.billing.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/billing/FADownloader.billing.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/exif/FADownloader.exif.iml" filepath="$PROJECT_DIR$/.idea/modules/exif/FADownloader.exif.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/exif/FADownloader.exif.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/exif/FADownloader.exif.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/exif/FADownloader.exif.main.iml" filepath="$PROJECT_DIR$/.idea/modules/exif/FADownloader.exif.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/exif/FADownloader.exif.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/exif/FADownloader.exif.unitTest.iml" />
     </modules>
   </component>
 </project>

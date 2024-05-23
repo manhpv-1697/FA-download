@@ -64,18 +64,18 @@ class DataProvider : ContentProvider() {
 		return match?.meta?.getType(match)
 	}
 	
-	override fun insert(
-		uri : Uri, values : ContentValues
-	) : Uri? {
+	override fun insert(uri: Uri, values: ContentValues?): Uri? {
 		val match = TableMeta.matchUri(uri)
 		
-		return match?.meta?.insert(
-			contextEx.contentResolver,
-			mDBHelper.writableDatabase,
-			match,
-			uri,
-			values
-		)
+		return values?.let {
+			match?.meta?.insert(
+				contextEx.contentResolver,
+				mDBHelper.writableDatabase,
+				match,
+				uri,
+				it
+			)
+		}
 	}
 	
 	override fun delete(
@@ -95,19 +95,24 @@ class DataProvider : ContentProvider() {
 	}
 	
 	override fun update(
-		uri : Uri, values : ContentValues, selection : String?, selectionArgs : Array<String>?
-	) : Int {
+		uri: Uri,
+		values: ContentValues?,
+		selection: String?,
+		selectionArgs: Array<out String>?
+	): Int {
 		val match = TableMeta.matchUri(uri)
-		
-		return match?.meta?.update(
-			contextEx.contentResolver,
-			mDBHelper.writableDatabase,
-			match,
-			uri,
-			values,
-			selection,
-			selectionArgs
-		) ?: 0
+
+		return values?.let {
+			match?.meta?.update(
+				contextEx.contentResolver,
+				mDBHelper.writableDatabase,
+				match,
+				uri,
+				it,
+				selection,
+				selectionArgs as Array<String>?
+			)
+		} ?: 0
 	}
 	
 	override fun query(

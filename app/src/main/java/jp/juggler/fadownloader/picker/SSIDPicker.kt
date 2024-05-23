@@ -1,5 +1,6 @@
 package jp.juggler.fadownloader.picker
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -111,21 +112,21 @@ class SSIDPicker : AppCompatActivity(), AdapterView.OnItemClickListener, View.On
 		if( Build.VERSION.SDK_INT >= 28){
 			networkCallback = object: ConnectivityManager.NetworkCallback() {
 				override fun onCapabilitiesChanged(
-					network : Network?,
-					networkCapabilities : NetworkCapabilities?
+					network: Network,
+					networkCapabilities: NetworkCapabilities
 				) {
 					super.onCapabilitiesChanged(network, networkCapabilities)
 					updateList()
 				}
 				
-				override fun onLost(network : Network?) {
+				override fun onLost(network: Network) {
 					super.onLost(network)
 					updateList()
 				}
 				
 				override fun onLinkPropertiesChanged(
-					network : Network?,
-					linkProperties : LinkProperties?
+					network: Network,
+					linkProperties: LinkProperties
 				) {
 					super.onLinkPropertiesChanged(network, linkProperties)
 					updateList()
@@ -136,12 +137,12 @@ class SSIDPicker : AppCompatActivity(), AdapterView.OnItemClickListener, View.On
 					updateList()
 				}
 				
-				override fun onLosing(network : Network?, maxMsToLive : Int) {
+				override fun onLosing(network: Network, maxMsToLive: Int) {
 					super.onLosing(network, maxMsToLive)
 					updateList()
 				}
 				
-				override fun onAvailable(network : Network?) {
+				override fun onAvailable(network: Network) {
 					super.onAvailable(network)
 					updateList()
 				}
@@ -159,6 +160,7 @@ class SSIDPicker : AppCompatActivity(), AdapterView.OnItemClickListener, View.On
 		}
 	}
 	
+	@SuppressLint("MissingPermission")
 	private fun updateList() {
 		val set = TreeSet<String>()
 		try {

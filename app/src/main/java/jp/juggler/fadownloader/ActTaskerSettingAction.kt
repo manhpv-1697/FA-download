@@ -24,9 +24,12 @@ class ActTaskerSettingAction : AppCompatActivity(), View.OnClickListener {
 		super.onCreate(savedInstanceState)
 		
 		try {
-			val callingApplicationLabel = packageManager.getApplicationLabel(
-				packageManager.getApplicationInfo(callingPackage, 0)
-			)
+			val callingApplicationLabel =
+				callingPackage?.let { packageManager.getApplicationInfo(it, 0) }?.let {
+					packageManager.getApplicationLabel(
+						it
+					)
+				}
 			title = if(callingApplicationLabel?.isNotEmpty() == true) {
 				"$callingApplicationLabel > ${getString(R.string.tasker_setting_action)}"
 			}else{

@@ -1,5 +1,6 @@
 package jp.juggler.fadownloader.tracker
 
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -120,21 +121,21 @@ class NetworkTracker(
 		if(Build.VERSION.SDK_INT >= 28) {
 			networkCallback = object : ConnectivityManager.NetworkCallback() {
 				override fun onCapabilitiesChanged(
-					network : Network?,
-					networkCapabilities : NetworkCapabilities?
+					network: Network,
+					networkCapabilities: NetworkCapabilities
 				) {
 					super.onCapabilitiesChanged(network, networkCapabilities)
 					worker?.notifyEx()
 				}
 				
-				override fun onLost(network : Network?) {
+				override fun onLost(network: Network) {
 					super.onLost(network)
 					worker?.notifyEx()
 				}
 				
 				override fun onLinkPropertiesChanged(
-					network : Network?,
-					linkProperties : LinkProperties?
+					network: Network,
+					linkProperties: LinkProperties
 				) {
 					super.onLinkPropertiesChanged(network, linkProperties)
 					worker?.notifyEx()
@@ -145,12 +146,12 @@ class NetworkTracker(
 					worker?.notifyEx()
 				}
 				
-				override fun onLosing(network : Network?, maxMsToLive : Int) {
+				override fun onLosing(network: Network, maxMsToLive: Int) {
 					super.onLosing(network, maxMsToLive)
 					worker?.notifyEx()
 				}
 				
-				override fun onAvailable(network : Network?) {
+				override fun onAvailable(network: Network) {
 					super.onAvailable(network)
 					worker?.notifyEx()
 				}
@@ -642,6 +643,7 @@ class NetworkTracker(
 	
 	// Wi-Fi AP の状態確認や強制を行う
 	// 接続先が見つかったら0L、またはリトライまでの時間(ミリ秒)を返す
+	@SuppressLint("MissingPermission")
 	private fun checkWiFiAp(ns_list : NetworkStatusList) : Long {
 		val wifi_status = requireNotNull(ns_list.wifi_status)
 		
@@ -874,8 +876,8 @@ class NetworkTracker(
 			// 現在のネットワーク接続を列挙する
 			if(Build.VERSION.SDK_INT >= 23) {
 				val active_handle : Long? = connectivityManager.activeNetwork?.networkHandle
-				
-				connectivityManager.allNetworks?.forEach { n ->
+
+				connectivityManager.allNetworks.forEach { n ->
 					n ?: return@forEach
 					val isActive = active_handle?.equals(n.networkHandle) == true
 					if(Build.VERSION.SDK_INT >= 28) {
@@ -896,11 +898,11 @@ class NetworkTracker(
 				val active_name = connectivityManager.activeNetworkInfo?.typeName
 				
 				@Suppress("DEPRECATION")
-				connectivityManager.allNetworkInfo?.forEach { ni ->
+				(connectivityManager.allNetworkInfo.forEach { ni ->
 					ni ?: return@forEach
 					val isActive = active_name?.equals(ni.typeName) == true
 					ns_list.addNetworkInfo(ni, isActive)
-				}
+				})
 			}
 			ns_list.afterAddAll()
 			lastOtherActive.set(ns_list.other_active)

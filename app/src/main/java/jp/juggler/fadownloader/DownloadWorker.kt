@@ -113,10 +113,10 @@ class DownloadWorker : WorkerBase {
 				cm == null -> {
 				}
 				
-				Build.VERSION.SDK_INT >= 21 -> for(n in cm.allNetworks) {
+				true -> for(n in cm.allNetworks) {
 					try {
 						val info = cm.getNetworkInfo(n)
-						if(info.isConnected && info.type == ConnectivityManager.TYPE_WIFI) {
+						if(info?.isConnected == true && info.type == ConnectivityManager.TYPE_WIFI) {
 							if(isValidSsid) return n
 						}
 					} catch(ex : Throwable) {
@@ -181,7 +181,7 @@ class DownloadWorker : WorkerBase {
 		log.i(R.string.thread_ctor_params)
 		
 		this.target_type = Pref.uiTargetType(intent)
-		this.target_url = intent.getStringExtra(DownloadService.EXTRA_TARGET_URL)
+		this.target_url = intent.getStringExtra(DownloadService.EXTRA_TARGET_URL).toString()
 		this.file_type = Pref.uiFileType(intent).trim()
 		
 		this.folder_uri = Pref.uiFolderUri(intent)
